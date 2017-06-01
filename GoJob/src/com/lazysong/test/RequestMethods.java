@@ -20,7 +20,8 @@ import com.lazysong.test.beans.User;
 import com.lazysong.test.beans.Willings;
 
 public class RequestMethods {
-	public static final String url = "jdbc:mysql://192.168.220.128/GoJob";// 用于本地虚拟机测试
+	public static final String url = "jdbc:mysql://192.168.43.142/GoJob";
+	//public static final String url = "jdbc:mysql://192.168.220.128/GoJob";// 用于本地虚拟机测试
 	public static final String name = "com.mysql.jdbc.Driver";
 	public static final String user = "root";
 	public static final String password = "1";
@@ -204,7 +205,7 @@ public class RequestMethods {
 				p.setExperience_requirement(ret.getString("EXPERIENCE_REQUIREMENT"));
 				p.setEducation_requirement(ret.getString("EDUCATION_REQUIREMENT"));
 				p.setPosition_count(ret.getInt("POSITION_COUNT"));
-				p.setPostition_type(ret.getString("POSTITION_TYPE"));
+				p.setPostition_type(ret.getString("POSITION_TYPE"));
 				p.setCategory_name(ret.getString("CATEGORY_NAME"));
 				list.add(p);
 			}
@@ -322,5 +323,18 @@ public class RequestMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public int getUpdateResult(String sql) {
+		// TODO Auto-generated method stub
+			try {
+				pst = conn.prepareStatement(sql);
+				return pst.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return 0;
+			}
+
 	}
 }
